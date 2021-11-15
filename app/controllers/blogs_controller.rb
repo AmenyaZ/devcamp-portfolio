@@ -27,8 +27,8 @@ class BlogsController < ApplicationController
       if @blog.save
         format.html { redirect_to @Blog, notice: "Your Post is now Live." }
       else
-        format.html { render :new, status: :unprocessable_entityblog_path( }
-        )      end
+        format.html { render :new }
+              end
     end
   end
 
@@ -57,7 +57,7 @@ class BlogsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      @blog = Blog.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
