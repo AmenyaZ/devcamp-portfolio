@@ -27,6 +27,7 @@ class PortfoliosController < ApplicationController
    # PATCH/PUT /blogs/1 or /blogs/1.json
   def update
   	@portfolio_item = Portfolio.find(params[:id])
+    
     respond_to do |format|
       if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
         format.html { redirect_to portfolios_path, notice: "Portfolio item was successfully updated." }
