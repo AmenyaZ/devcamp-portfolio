@@ -1,7 +1,7 @@
 module SetSource
 	extend ActiveSupport::Concern
 
-	included do
+	includored do
 		before_action :set_source
 	end
 	def set_source
