@@ -38,7 +38,6 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-    binding.pry 
   end
 
    # DELETE /blogs/1 or /blogs/1.json
