@@ -1,4 +1,5 @@
 class PortfoliosController < ApplicationController
+  before_action :set_potfolio_item, only:[:edit, :update, :show, :destroy] 
   layout 'portfolio'
 	def index 
 		@portfolio_items = Portfolio.all
@@ -22,12 +23,10 @@ class PortfoliosController < ApplicationController
   end
 
   def edit
-  	@portfolio_item = Portfolio.find(params[:id])
   end
 
    # PATCH/PUT /blogs/1 or /blogs/1.json
   def update
-  	@portfolio_item = Portfolio.find(params[:id])
     
     respond_to do |format|
       if @portfolio_item.update(params.require(:portfolio).permit(:title, :subtitle, :body))
@@ -39,13 +38,12 @@ class PortfoliosController < ApplicationController
   end
 
   def show
-  	@portfolio_item = Portfolio.find(params[:id])
+    binding.pry 
   end
 
    # DELETE /blogs/1 or /blogs/1.json
   def destroy
   	#perform the lookup
-  	@portfolio_item = Portfolio.find(params[:id])
 
   	#Destroy the post
     @portfolio_item.destroy
@@ -54,6 +52,9 @@ class PortfoliosController < ApplicationController
     respond_to do |format|
       format.html { redirect_to portfolios_url, notice: "Post successfully Removed." }
     end
+  end
+  def set_potfolio_item
+    @portfolio_item = Portfolio.find(params[:id])
   end
 
 end
