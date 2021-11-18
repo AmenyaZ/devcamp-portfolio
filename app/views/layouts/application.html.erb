@@ -4,7 +4,7 @@
 
    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <title><%= @page_title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
@@ -15,26 +15,28 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <%= render "shared/nav", location: 'top' %>
-
-    <% if current_user %>
-    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <% else %>
-     <%= link_to "Register", new_user_registration_path %>
-     <%= _to "Login", new_user_session_path %>
-    <% end %>
+    <
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
 
 
-    <%= yield %>  
+        <%= render "shared/application_nav" %>
 
-    <%= @copyright %>
+        <% if current_user %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+        <% else %>
+         <%= link_to "Register", new_user_registration_path %>
+         <%= _to "Login", new_user_session_path %>
+        <% end %>
 
-    <% if session[:source]   %>
-        Thanks for visiting me from <%= session[source]%>
-  <% end %>
+
+        <%= yield %>  
+
+        <%= @copyright %>
+
+        <% if session[:source]   %>
+            Thanks for visiting me from <%= session[source]%>
+        <% end %>
+    </div>
   
   </body>
 </html>
