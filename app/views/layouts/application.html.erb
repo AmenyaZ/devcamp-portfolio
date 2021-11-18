@@ -21,17 +21,12 @@
 
         <%= render "shared/application_nav" %>
 
-        <% if current_user %>
-        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        <% else %>
-         <%= link_to "Register", new_user_registration_path %>
-         <%= _to "Login", new_user_session_path %>
-        <% end %>
+        
 
 
         <%= yield %>  
 
-        <%= @copyright %>
+         <%= render "shared/application_footer" %>
 
         <% if session[:source]   %>
             Thanks for visiting me from <%= session[source]%>
